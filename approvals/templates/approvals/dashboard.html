@@ -1,0 +1,15 @@
+<h2>Pending Orders</h2>
+<ul>
+  {% for order in orders %}
+    <li>
+      {{ order }} -
+      <form method="post" action="{% url 'approve_order' order.id %}">{% csrf_token %}
+        <button type="submit">Approve</button>
+      </form>
+      <form method="post" action="{% url 'reject_order' order.id %}">{% csrf_token %}
+        <input type="text" name="justification" placeholder="Justification" required>
+        <button type="submit">Reject</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
