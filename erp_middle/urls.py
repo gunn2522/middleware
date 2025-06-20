@@ -18,10 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
+from orders.views import OrderCreateAPI
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('orders.urls')),
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    path("api/users/", include("users.urls")),
 
+    path('api/orders/create/', OrderCreateAPI.as_view(), name='order-create'),
 ]
+
+
+
+
+
+
+
+from django.urls import path, include
+
 

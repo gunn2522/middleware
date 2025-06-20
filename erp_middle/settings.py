@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from decouple import config
 
 from pathlib import Path
+import os
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,15 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'approvals',
-    'audit',
-    'dashboards',
-    'integration',
-    'inventory',
-    'notifications',
-    'orders',
     'users',
-    'rest_framework'
+    'rest_framework',
+    'orders',
+    'erp_integration',
+
 ]
 
 MIDDLEWARE = [
@@ -132,3 +132,17 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+# from decouple import config
+#
+# # ERPNext credentials from .env
+# FRAPPE_URL = config("FRAPPE_URL")
+# FRAPPE_API_KEY = config("FRAPPE_API_KEY")
+# FRAPPE_SECRET_KEY = config("FRAPPE_SECRET_KEY")
+# print("✅ DEBUG:", config("FRAPPE_SECRET_KEY"))
+
+from decouple import config
+FRAPPE_URL = config("FRAPPE_URL")
+FRAPPE_API_KEY = config("FRAPPE_API_KEY")
+FRAPPE_SECRET_KEY = config("FRAPPE_SECRET_KEY")
+print("FRAPPE API KEY:", FRAPPE_API_KEY)

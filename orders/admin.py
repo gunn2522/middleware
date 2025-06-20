@@ -1,9 +1,7 @@
-from .models import Order, Warehouse, Vehicle, Item
 from django.contrib import admin
 
-
+from orders.models import Order
 
 admin.site.register(Order)
-admin.site.register(Warehouse)
-admin.site.register(Vehicle)
-admin.site.register(Item)
+
+# Register your models here.
